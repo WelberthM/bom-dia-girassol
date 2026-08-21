@@ -209,8 +209,17 @@ body {
     font-size: 1.2rem;
     font-weight: 300;
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     color: #4a4a4a;
+}
+
+.subtitle-2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #d35400; /* Um tom alaranjado combinando com o título */
+    font-style: italic;
 }
 
 .heart {
@@ -265,6 +274,39 @@ body {
 @keyframes float {
     0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
     50% { transform: translateY(-50px) scale(1.2); opacity: 0.6; }
+}
+
+/* Efeito: Mensagem Escondida do Coração */
+.hidden-ps {
+    font-size: 1.1rem;
+    color: #e74c3c;
+    font-weight: 500;
+    font-style: italic;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-top: 0;
+}
+.hidden-ps.show-ps {
+    opacity: 1;
+    max-height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Efeito: Corações/Brilhos flutuantes pelo clique */
+.floating-heart-anim {
+    position: fixed;
+    font-size: 1.5rem;
+    pointer-events: none;
+    z-index: 1000;
+    animation: float-up-fade 2s ease-out forwards;
+}
+
+@keyframes float-up-fade {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    100% { transform: translate(-50%, -150px) scale(1.5); opacity: 0; }
 }
 
 /* Responsividade para telas menores (celulares) */
