@@ -327,7 +327,7 @@ body {
 }
 .hidden-ps.show-ps {
     opacity: 1;
-    max-height: 50px;
+    max-height: 150px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
