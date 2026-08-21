@@ -76,6 +76,7 @@ function createSunflower() {
     allPetalContainers.forEach(petalsContainer => {
         const numLayers = 3;
         const petalsPerLayer = [30, 25, 20];
+        const fragment = document.createDocumentFragment(); // Otimização de renderização
         
         for (let layer = 0; layer < numLayers; layer++) {
             const numPetals = petalsPerLayer[layer];
@@ -96,9 +97,10 @@ function createSunflower() {
                 petal.style.setProperty('--delay', `${randomDelay}s`);
                 petal.style.setProperty('--scale', finalScale);
                 
-                petalsContainer.appendChild(petal);
+                fragment.appendChild(petal);
             }
         }
+        petalsContainer.appendChild(fragment); // Adiciona tudo de uma vez
     });
 }
 
