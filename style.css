@@ -11,6 +11,11 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     font-family: 'Outfit', sans-serif;
     background: var(--bg-sunrise);
@@ -18,7 +23,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     color: var(--text-primary);
 }
 
@@ -60,6 +66,7 @@ body {
     justify-content: center;
     align-items: center;
     animation: gentle-spin 40s linear infinite;
+    will-change: transform;
 }
 
 /* Efeito de iluminação (brilho pulsante) */
@@ -72,20 +79,20 @@ body {
     background: radial-gradient(circle, rgba(255, 215, 0, 0.9) 0%, rgba(255, 140, 0, 0.5) 40%, transparent 70%);
     border-radius: 50%;
     z-index: 0;
+    filter: blur(20px);
     animation: illuminate-day 4s ease-in-out infinite;
     pointer-events: none;
+    will-change: transform, opacity;
 }
 
 @keyframes illuminate-day {
     0%, 100% {
         transform: scale(1);
         opacity: 0.6;
-        filter: blur(15px);
     }
     50% {
         transform: scale(3.5);
         opacity: 1;
-        filter: blur(25px);
     }
 }
 
@@ -129,6 +136,7 @@ body {
     height: 100%;
     z-index: 1;
     animation: flower-breathe 4s ease-in-out infinite;
+    will-change: transform;
 }
 
 @keyframes flower-breathe {
@@ -283,6 +291,7 @@ body {
     filter: blur(10px);
     animation: float 10s infinite ease-in-out;
     z-index: 1;
+    will-change: transform, opacity;
 }
 
 @keyframes float {

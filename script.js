@@ -40,11 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Efeito 3: Corações/Brilhos flutuantes ao clicar na tela
-    document.addEventListener('click', (e) => {
-        if (e.target.tagName === 'IFRAME' || e.target.tagName === 'A' || e.target.id === 'interactive-heart') return;
-        spawnFloatingElement(e.clientX, e.clientY, '✨');
-    });
+    // Removido o efeito de estrela ao clicar na tela conforme solicitado
 
     // Criar o girassol via JS
     createSunflower();
@@ -75,10 +71,10 @@ function createSunflower() {
     if (!petalsContainer) return;
     
     // Camada 1 (fundo)
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < 16; i++) {
         const petal = document.createElement('div');
         petal.classList.add('petal');
-        const angle = (i * 15) + (Math.random() * 4 - 2); 
+        const angle = (i * 22.5) + (Math.random() * 4 - 2); 
         const scale = 0.9 + Math.random() * 0.15;
         const delay = Math.random() * 1.2;
         
@@ -89,10 +85,10 @@ function createSunflower() {
     }
     
     // Camada 2 (meio)
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < 16; i++) {
         const petal = document.createElement('div');
         petal.classList.add('petal', 'layer-2');
-        const angle = (i * 15 + 7.5) + (Math.random() * 4 - 2);
+        const angle = (i * 22.5 + 11.25) + (Math.random() * 4 - 2);
         const scale = 0.85 + Math.random() * 0.15;
         const delay = 0.2 + Math.random() * 1.2;
         
@@ -103,10 +99,10 @@ function createSunflower() {
     }
     
     // Camada 3 (frente)
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 12; i++) {
         const petal = document.createElement('div');
         petal.classList.add('petal', 'layer-3');
-        const angle = (i * 20) + (Math.random() * 4 - 2);
+        const angle = (i * 30) + (Math.random() * 4 - 2);
         const scale = 0.75 + Math.random() * 0.15;
         const delay = 0.4 + Math.random() * 1.0;
         
@@ -118,7 +114,7 @@ function createSunflower() {
 }
 
 function createLightBubbles() {
-    const bubbleCount = 15;
+    const bubbleCount = 5; // Reduzido para melhorar a performance
     const body = document.body;
     
     for (let i = 0; i < bubbleCount; i++) {
