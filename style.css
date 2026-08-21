@@ -18,26 +18,41 @@ html {
 
 body {
     font-family: 'Outfit', sans-serif;
-    background: var(--bg-sunrise);
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #fbd786 100%);
+    background-size: 200% 200%;
+    animation: sunrise-shift 15s ease infinite;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
-    overflow-y: auto;
     color: var(--text-primary);
 }
 
+@keyframes sunrise-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 .container {
-    width: 100%;
+    width: 90%;
     max-width: 480px;
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     position: relative;
     z-index: 10;
+    
+    /* Efeito Glassmorphism (Vidro Fosco Premium) */
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
 }
 
 .sunflower-wrapper {
@@ -48,9 +63,7 @@ body {
     opacity: 0;
     transform: scale(0.8) translateY(20px);
     transition: all 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative; /* Necessário para posicionar o buquê */
 }
 
 .sunflower-wrapper.show {
@@ -59,7 +72,7 @@ body {
 }
 
 .css-sunflower {
-    position: relative;
+    position: absolute;
     width: 250px;
     height: 250px;
     display: flex;
@@ -67,6 +80,27 @@ body {
     align-items: center;
     animation: gentle-spin 40s linear infinite;
     will-change: transform;
+}
+
+.main-sunflower {
+    z-index: 3;
+    top: 0;
+    left: 0;
+}
+
+.side-sunflower {
+    z-index: 2;
+    transform: scale(0.65);
+    animation-duration: 50s; /* Gira um pouco mais devagar */
+}
+.side-sunflower.left-sunflower {
+    left: -80px;
+    top: 50px;
+    animation-direction: reverse;
+}
+.side-sunflower.right-sunflower {
+    right: -80px;
+    top: 60px;
 }
 
 /* Efeito de iluminação (brilho pulsante) */
@@ -267,7 +301,9 @@ body {
 .spotify-btn {
     display: inline-block;
     padding: 0.8rem 1.5rem;
-    background-color: #1DB954;
+    background-color: rgba(29, 185, 84, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: white;
     text-decoration: none;
     border-radius: 50px;
@@ -275,12 +311,14 @@ body {
     font-size: 0.95rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(29, 185, 84, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .spotify-btn:hover {
-    background-color: #1ed760;
+    background-color: rgba(29, 185, 84, 1);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(29, 185, 84, 0.6);
+    box-shadow: 0 8px 25px rgba(29, 185, 84, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 /* Bolhas de luz no fundo para dar um toque mágico */
@@ -315,9 +353,10 @@ body {
 
 /* Efeito: Mensagem Escondida do Coração */
 .hidden-ps {
-    font-size: 1.1rem;
-    color: #e74c3c;
-    font-weight: 500;
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    color: #c0392b;
+    font-weight: 600;
     font-style: italic;
     opacity: 0;
     max-height: 0;

@@ -71,50 +71,35 @@ function spawnFloatingElement(x, y, symbol) {
 }
 
 function createSunflower() {
-    const petalsContainer = document.getElementById('petals');
-    if (!petalsContainer) return;
+    const allPetalContainers = document.querySelectorAll('.petals');
     
-    // Camada 1 (fundo)
-    for (let i = 0; i < 16; i++) {
-        const petal = document.createElement('div');
-        petal.classList.add('petal');
-        const angle = (i * 22.5) + (Math.random() * 4 - 2); 
-        const scale = 0.9 + Math.random() * 0.15;
-        const delay = Math.random() * 1.2;
+    allPetalContainers.forEach(petalsContainer => {
+        const numLayers = 3;
+        const petalsPerLayer = [30, 25, 20];
         
-        petal.style.setProperty('--angle', `${angle}deg`);
-        petal.style.setProperty('--scale', scale);
-        petal.style.setProperty('--delay', `${delay}s`);
-        petalsContainer.appendChild(petal);
-    }
-    
-    // Camada 2 (meio)
-    for (let i = 0; i < 16; i++) {
-        const petal = document.createElement('div');
-        petal.classList.add('petal', 'layer-2');
-        const angle = (i * 22.5 + 11.25) + (Math.random() * 4 - 2);
-        const scale = 0.85 + Math.random() * 0.15;
-        const delay = 0.2 + Math.random() * 1.2;
-        
-        petal.style.setProperty('--angle', `${angle}deg`);
-        petal.style.setProperty('--scale', scale);
-        petal.style.setProperty('--delay', `${delay}s`);
-        petalsContainer.appendChild(petal);
-    }
-    
-    // Camada 3 (frente)
-    for (let i = 0; i < 12; i++) {
-        const petal = document.createElement('div');
-        petal.classList.add('petal', 'layer-3');
-        const angle = (i * 30) + (Math.random() * 4 - 2);
-        const scale = 0.75 + Math.random() * 0.15;
-        const delay = 0.4 + Math.random() * 1.0;
-        
-        petal.style.setProperty('--angle', `${angle}deg`);
-        petal.style.setProperty('--scale', scale);
-        petal.style.setProperty('--delay', `${delay}s`);
-        petalsContainer.appendChild(petal);
-    }
+        for (let layer = 0; layer < numLayers; layer++) {
+            const numPetals = petalsPerLayer[layer];
+            const angleStep = 360 / numPetals;
+            
+            for (let i = 0; i < numPetals; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                if (layer > 0) petal.classList.add(`layer-${layer + 1}`);
+                
+                const randomOffset = (Math.random() - 0.5) * 5;
+                const angle = (i * angleStep) + (layer * 15) + randomOffset;
+                const baseDelay = (3 - layer) * 0.4;
+                const randomDelay = baseDelay + (Math.random() * 0.5);
+                const finalScale = 0.85 + (Math.random() * 0.3);
+                
+                petal.style.setProperty('--angle', `${angle}deg`);
+                petal.style.setProperty('--delay', `${randomDelay}s`);
+                petal.style.setProperty('--scale', finalScale);
+                
+                petalsContainer.appendChild(petal);
+            }
+        }
+    });
 }
 
 function createLightBubbles() {
