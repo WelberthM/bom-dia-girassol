@@ -28,10 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Efeito 2: Coração interativo (Mensagem escondida)
     const mainHeart = document.getElementById('interactive-heart');
     const hiddenPs = document.getElementById('hidden-ps');
+    const hintPs = document.getElementById('dont-click-hint');
     if (mainHeart && hiddenPs) {
         mainHeart.style.cursor = 'pointer';
         mainHeart.addEventListener('click', () => {
             hiddenPs.classList.toggle('show-ps');
+            if (hintPs) hintPs.classList.add('hide-hint');
             
             // Lança coraçõezinhos extras ao clicar no coração principal
             for(let i=0; i<5; i++) {
