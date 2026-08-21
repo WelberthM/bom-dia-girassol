@@ -324,15 +324,16 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-/* Bolhas de luz no fundo para dar um toque mágico */
+/* Bolhas de luz no fundo para dar um toque mágico (Efeito Bokeh) */
 .light-bubble {
-    position: absolute;
+    position: fixed;
     border-radius: 50%;
-    /* Substituindo o pesado filter: blur por um radial-gradient nativo */
-    background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%);
+    /* Gradiente mais quente e visível para o Bokeh fotográfico */
+    background: radial-gradient(circle, rgba(255, 245, 200, 0.7) 0%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0) 70%);
     animation: float 10s infinite ease-in-out;
     z-index: 1;
     will-change: transform, opacity;
+    pointer-events: none;
 }
 
 @keyframes float {

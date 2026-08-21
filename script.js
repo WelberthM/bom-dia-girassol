@@ -105,7 +105,7 @@ function createSunflower() {
 }
 
 function createLightBubbles() {
-    const bubbleCount = 5; // Reduzido para melhorar a performance
+    const bubbleCount = 15; // Aumentado novamente (agora que otimizamos o blur)
     const body = document.body;
     
     for (let i = 0; i < bubbleCount; i++) {
@@ -113,18 +113,18 @@ function createLightBubbles() {
         bubble.classList.add('light-bubble');
         
         // Propriedades aleatórias
-        const size = Math.random() * 60 + 20; // 20px a 80px
-        const left = Math.random() * 100; // 0% a 100%
-        const top = Math.random() * 100; // 0% a 100%
-        const delay = Math.random() * 5; // 0s a 5s
-        const duration = Math.random() * 10 + 5; // 5s a 15s
+        const size = 20 + Math.random() * 70; // Tamanhos mais variados para profundidade
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        const animDuration = 10 + Math.random() * 15;
+        const delay = Math.random() * 5;
         
         bubble.style.width = `${size}px`;
         bubble.style.height = `${size}px`;
         bubble.style.left = `${left}%`;
         bubble.style.top = `${top}%`;
-        bubble.style.animationDelay = `${delay}s`;
-        bubble.style.animationDuration = `${duration}s`;
+        bubble.style.animationDuration = `${animDuration}s`;
+        bubble.style.animationDelay = `-${delay}s`; 
         
         body.appendChild(bubble);
     }
