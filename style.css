@@ -313,11 +313,6 @@ body {
     display: none;
 }
 
-/* Quando o message-container aparece, o hint aparece junto com a cascata */
-.message-container.show .dont-click-hint {
-    animation: fade-up 1s ease forwards 4.5s; /* Aparece logo depois do coração */
-}
-
 /* Efeito: Mensagem Escondida do Coração */
 .hidden-ps {
     font-size: 1.1rem;

@@ -8,15 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
         messageContainer.classList.add('show');
         
         // Efeito 1: Textos aparecendo aos poucos
-        const texts = messageContainer.querySelectorAll('.title, .subtitle, .subtitle-2, .heart, .media-container');
+        const texts = messageContainer.querySelectorAll('.title, .subtitle, .subtitle-2, .heart, .dont-click-hint, .media-container');
         texts.forEach((el, index) => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(15px)';
             el.style.transition = 'all 1s ease';
             
-            // O "Te adoro!" e o coração demoram mais (suspense)
-            let delay = 500 + (index * 1200); 
-            if (el.classList.contains('subtitle-2')) delay += 1000;
+            // O "Te adoro!", coração e dica demoram mais (suspense)
+            let delay = 500 + (index * 1000); 
+            if (el.classList.contains('subtitle-2')) delay += 800;
+            if (el.classList.contains('heart')) delay += 1000;
+            if (el.classList.contains('dont-click-hint')) delay += 1500; // Aparece por último
             
             setTimeout(() => {
                 el.style.opacity = '1';
