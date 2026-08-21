@@ -266,3 +266,40 @@ body {
     0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
     50% { transform: translateY(-50px) scale(1.2); opacity: 0.6; }
 }
+
+/* Responsividade para telas menores (celulares) */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .title {
+        font-size: 2.2rem; /* Título menor para caber na tela */
+        margin-bottom: 0.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 0 10px;
+    }
+    
+    /* Reduz levemente o girassol inteiro sem quebrar o layout das pétalas */
+    .sunflower-wrapper.show {
+        transform: scale(0.8) translateY(0);
+        margin-bottom: 0;
+    }
+
+    .media-container {
+        margin-top: 1rem;
+    }
+    
+    .media-container iframe {
+        height: 180px; /* Reduz altura do vídeo para celulares menores */
+    }
+    
+    .spotify-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
