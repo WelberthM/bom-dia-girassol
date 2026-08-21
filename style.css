@@ -22,6 +22,7 @@ body {
     background-size: 200% 200%;
     animation: sunrise-shift 15s ease infinite;
     min-height: 100vh;
+    min-height: 100svh; /* Otimização específica para Safari (iOS) */
     display: flex;
     justify-content: center;
     align-items: center;
